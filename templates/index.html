@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        
+        th {background: RGB(149, 82, 81);color: black;}
+        table,th,td{padding: 8px;border: 3px Solid RGB(239, 192, 80);border-collapse: collapse;}
+        
+    </style>
+    
+</head>
+<body style = 'height: 300px;
+               position: relative;
+               border: 5px solid RGB(239, 192, 80);
+               background-color:RGB(149, 82, 81);
+	       margin: 0;
+               position: absolute;
+  	       top: 50%;
+  	       left: 50%;
+  	       -ms-transform: translate(-50%, -50%);
+ 	       transform: translate(-50%, -50%);'>
+    
+    <h2 style = 'text-align:center'>Your Decks</h2>
+    <table style = 'margin-left:auto ; margin-right:auto'>
+        <tr>
+            <th>Deck Name</th>
+            <th>Action</th>
+        </tr>
+
+        {% for row in rows %}
+        <tr>
+            <td><a href="/review/{{row[0]}}">{{row[0]}}</a></td>
+            <td>
+                <a href="/deletedeck/{{row[0]}}">Delete</a>
+                <br>
+                <a href="/updatedeck/{{row[0]}}">Update</a> 
+                <br>
+                <a href="/addcard/{{row[0]}}">Add a Card</a>
+            </td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+    <p style = 'text-align:center'>Last Reviewed:{{time}}</p>
+    <hr>
+    <p style = 'text-align:center'><a href="/createdeck">Add Deck</a></p>
+</body>
+</html>
